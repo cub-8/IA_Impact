@@ -13,10 +13,9 @@ df = kh.dataset_load(
 
 st.title("Impacto de la IA en la vida estudiantil en Pakistán") 
 
-# st.write(df.head())
+st.write(df.head())
 
 #1.1
-
 city = st.selectbox("Selecciona una ciudad", ["Todas"] + list(df["City"].unique()))
 
 bar_impact_ia = df
@@ -27,3 +26,9 @@ if city != "Todas":
 else:
     st.bar_chart(bar_impact_ia.groupby(["AI_Tool_Used", "Impact_on_Grades"]).size().unstack())
 
+#1.2
+purpose = st.radio("Selecciona el uso de IA", df["Purpose"].unique())
+
+bar_purpose_ia = df[df["Purpose"] == purpose]
+
+st.bar_chart(bar_purpose_ia["Impact_on_Grades"].value_counts())
