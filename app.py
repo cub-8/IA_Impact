@@ -62,7 +62,6 @@ ia_students.columns = ["Herramienta", "Cantidad de estudiantes"]
 st.dataframe(ia_students)
 
 #1.4
-#1.4
 st.subheader("Promedio de uso diario por género o nivel de educación")
 
 st.write("Selecciona el grupo para comparar el promedio de horas de uso diario de IA")
@@ -84,3 +83,12 @@ else:
     st.write("El promedio de horas de uso diario de IA es:", mean)
 
 #1.5
+st.subheader("Comparación del impacto de la IA en las calificaciones por ciudad")
+
+cities = st.multiselect("Selecciona las ciudades para comparar", df["City"].unique())
+
+if cities:
+    cities_impact = df[df["City"].isin(cities)].groupby(["City", "Impact_on_Grades"]).size().unstack(fill_value=0)
+    st.bar_chart(cities_impact[["Improved"]])
+else:
+    st.info("Selecciona al menos una ciudad para ver la comparación.")
