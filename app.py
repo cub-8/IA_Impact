@@ -61,4 +61,26 @@ ia_students = (
 ia_students.columns = ["Herramienta", "Cantidad de estudiantes"]
 st.dataframe(ia_students)
 
+#1.4
+#1.4
+st.subheader("Promedio de uso diario por género o nivel de educación")
 
+st.write("Selecciona el grupo para comparar el promedio de horas de uso diario de IA")
+gender = st.checkbox("Género", value=True)
+education = st.checkbox("Nivel de Educación")
+
+mean = df["Daily_Usage_Hours"].mean()
+
+if gender and education:
+    gender_education = df.groupby(["Education_Level", "Gender"])["Daily_Usage_Hours"].mean().unstack()
+    st.bar_chart(gender_education)
+elif gender:
+    gender_education = df.groupby("Gender")["Daily_Usage_Hours"].mean()
+    st.bar_chart(gender_education)
+elif education:
+    gender_education = df.groupby("Education_Level")["Daily_Usage_Hours"].mean()
+    st.bar_chart(gender_education)
+else:
+    st.write("El promedio de horas de uso diario de IA es:", mean)
+
+#1.5
