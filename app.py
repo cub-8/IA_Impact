@@ -11,9 +11,9 @@ df = kh.dataset_load(
   "AI_Student_Life_Pakistan_2026.csv"
 )
 
-st.title("Impacto de la IA en la vida estudiantil en Pakistán") 
+st.title("Impacto de la IA en la vida estudiantil en Pakistán")
 
-st.write(df.head())
+
 
 #1.1
 st.subheader("Impacto de la IA en las calificaciones por ciudad")
@@ -92,3 +92,26 @@ if cities:
     st.bar_chart(cities_impact[["Improved"]])
 else:
     st.info("Selecciona al menos una ciudad para ver la comparación.")
+
+#Conclusiones
+st.subheader("Conclusiones")
+
+st.markdown("""
+**1. El uso determina el impacto académico**  
+Los estudiantes que utilizan IA para investigar, resolver problemas o mejorar
+su comprensión de los temas muestran una mejora en sus califcaciones, mientras
+que los que ocupan estas herramientas para entretenimiento o automatizar tareas
+no muestran tal mejora, sugiriendo que el cómo se usa la IA es crucial
+en el rendimiento académico.
+            
+**2. Alta satisfacción no garantiza mejor rendimiento.**  
+Un grupo significativo de estudiantes menciona estar muy satisfechos con el uso de IA 
+a pesar de experimentar una ligera disminución en sus calificaciones, sugiriendo 
+que la utilidad de la IA no solo se enfoca en los resultados académicos, 
+también puede estar relacionada con otras cosas.
+
+**3. El impacto de la IA varía según el entorno geográfico y educativo.**  
+Las diferencias entre ciudades respecto al porcentaje de estudiantes que 
+muestran mejora en sus calificaciones con IA muestran que el entorno de los
+estudiantes influye en cómo los estudiantes ocupan estas herramientas.
+""")
